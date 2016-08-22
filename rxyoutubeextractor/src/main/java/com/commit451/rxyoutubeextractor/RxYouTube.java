@@ -11,7 +11,7 @@ import rx.Observable;
 /**
  * Interface for RxYouTube extraction
  */
-public interface RxYouTube {
+interface RxYouTube {
     @GET(YouTubeExtractorConstants.INFO)
     Observable<YouTubeExtractionResult> extract(@Query(YouTubeExtractorConstants.VIDEO_ID) String videoId);
 }

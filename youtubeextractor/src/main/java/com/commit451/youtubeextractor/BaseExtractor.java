@@ -2,6 +2,8 @@ package com.commit451.youtubeextractor;
 
 import android.support.annotation.Nullable;
 
+import com.commit451.youtubeextractor.extraction.OkHttpDownloader;
+
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
@@ -32,10 +34,11 @@ public abstract class BaseExtractor<T> {
 
         Retrofit.Builder retrofitBuilder = new Retrofit.Builder();
 
+        OkHttpDownloader okHttpDownloader = new OkHttpDownloader();
         retrofitBuilder
             .baseUrl(BASE_URL)
             .client(okBuilder.build())
-            .addConverterFactory(YouTubeExtractionConverterFactory.create());
+            .addConverterFactory(YouTubeExtractionConverterFactory.create(okHttpDownloader));
 
         if (callAdapterFactory != null) {
             retrofitBuilder.addCallAdapterFactory(callAdapterFactory);

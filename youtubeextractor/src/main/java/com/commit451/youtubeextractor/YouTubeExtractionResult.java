@@ -5,19 +5,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 
+import com.commit451.youtubeextractor.extraction.AudioStream;
+
+import java.util.List;
+
 /**
  * The result of a YouTube extraction.
  */
 public class YouTubeExtractionResult implements Parcelable {
 
-    private Uri mSd240VideoUri;
-    private Uri mSd360VideoUri;
-    private Uri mHd720VideoUri;
-    private Uri mHd1080VideoUri;
-    private Uri mMediumThumbUri;
-    private Uri mHighThumbUri;
-    private Uri mDefaultThumbUri;
-    private Uri mStandardThumbUri;
+    int mAgeLimit;
+    List<AudioStream> mAudioStreams;
+    String mAverageRating;
+    String mDescription;
+    int mDislikeCount;
+    int mLength;
+    int mLikeCount;
+    String mPageUrl;
+    String mTitle;
+    String mUploader;
+    Uri mSd240VideoUri;
+    Uri mSd360VideoUri;
+    Uri mHd720VideoUri;
+    Uri mHd1080VideoUri;
+    Uri mMediumThumbUri;
+    Uri mHighThumbUri;
+    Uri mDefaultThumbUri;
+    Uri mStandardThumbUri;
 
     protected YouTubeExtractionResult() {
         //Do the rest in the setters

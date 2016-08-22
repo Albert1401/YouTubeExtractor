@@ -9,4 +9,8 @@ public class YouTubeExtractionException extends IOException {
     public YouTubeExtractionException(String detailMessage) {
         super(detailMessage);
     }
+
+    public YouTubeExtractionException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

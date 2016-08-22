@@ -1,5 +1,7 @@
 package com.commit451.youtubeextractor;
 
+import com.commit451.youtubeextractor.extraction.OkHttpDownloader;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
@@ -13,8 +15,14 @@ import retrofit2.Retrofit;
  */
 class YouTubeExtractionConverterFactory extends Converter.Factory {
 
-    public static YouTubeExtractionConverterFactory create() {
-        return new YouTubeExtractionConverterFactory();
+    public static YouTubeExtractionConverterFactory create(OkHttpDownloader downloader) {
+        return new YouTubeExtractionConverterFactory(downloader);
+    }
+
+    private OkHttpDownloader mOkHttpDownloader;
+
+    private YouTubeExtractionConverterFactory(OkHttpDownloader okHttpDownloader) {
+        mOkHttpDownloader = okHttpDownloader;
     }
 
     @Override
@@ -22,7 +30,7 @@ class YouTubeExtractionConverterFactory extends Converter.Factory {
         // This is good, we only register if the call includes this type, so that we could potentially
         // still be okay with having additional converter factories if we needed to
         if (type == YouTubeExtractionResult.class) {
-            return new YouTubeBodyConverter(retrofit.baseUrl());
+            return new YouTubeBodyConverter(mOkHttpDownloader, retrofit.baseUrl().toString());
         }
         // Allow others to give it a go
         return null;

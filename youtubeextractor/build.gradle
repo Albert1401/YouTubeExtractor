@@ -28,6 +28,8 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.9.5'
     compile "com.android.support:support-annotations:$SUPPORT_LIB_VERSION"
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile 'org.jsoup:jsoup:1.8.3'
+    compile 'org.mozilla:rhino:1.7.7'
 }
 
 apply from: 'https://raw.githubusercontent.com/Commit451/gradle-android-javadocs/1.0.0/gradle-android-javadocs.gradle'
